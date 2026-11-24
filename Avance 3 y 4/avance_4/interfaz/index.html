@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard climático</title>
+<style>
+:root{--fondo:#f4f6f9;--tarjeta:#fff;--texto:#1f2933;--suave:#5b6773;--azul:#1f3a5f;--borde:#dde3ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:var(--fondo);color:var(--texto)}
+header{background:var(--azul);color:#fff;padding:14px 24px}
+header h1{margin:0;font-size:20px;font-weight:600}
+header p{margin:2px 0 0;font-size:13px;opacity:.85}
+.layout{display:grid;grid-template-columns:290px 1fr;gap:18px;padding:18px 24px;max-width:1500px;margin:auto}
+aside{background:var(--tarjeta);border:1px solid var(--borde);border-radius:8px;padding:16px;align-self:start}
+aside h2{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--suave);margin:16px 0 6px}
+aside h2:first-child{margin-top:0}
+label{font-size:13px;display:block;margin:4px 0}
+select,input[type=range]{width:100%}
+select{padding:6px;border:1px solid var(--borde);border-radius:6px;font-size:13px;background:#fff}
+.fila{display:flex;gap:8px}
+.chk label{display:inline-block;margin-right:10px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.kpi{background:var(--tarjeta);border:1px solid var(--borde);border-radius:8px;padding:12px 14px}
+.kpi span{font-size:12px;color:var(--suave)}
+.kpi b{display:block;font-size:24px;margin:2px 0;font-weight:600}
+.kpi small{font-size:11.5px;color:var(--suave)}
+.graficos{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:12px;margin-top:12px}
+.card{background:var(--tarjeta);border:1px solid var(--borde);border-radius:8px;padding:12px 14px}
+.card h3{margin:0 0 8px;font-size:14px}
+.card img{width:100%;height:auto;display:block}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--borde)}
+th{color:var(--suave);font-weight:600}
+.mejor{font-weight:600;color:#0a6b3d}
+.aviso{background:#fff4e5;border:1px solid #f0c27b;border-radius:8px;padding:12px;margin-top:12px;font-size:14px}
+.nota{font-size:12px;color:var(--suave);margin-top:10px}
+#cargando{opacity:.5;pointer-events:none}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Comportamiento climático integrado</h1>
+  <p>Observaciones diarias de 49 estaciones de Australia (2008-2017). Explore los datos y proyecte escenarios futuros.</p>
+</header>
+<div class="layout">
+<aside>
+  <h2>Filtros</h2>
+  <label for="variable">Variable</label>
+  <select id="variable"></select>
+  <label for="estaciones">Estaciones (Ctrl para varias; sin selección = todas)</label>
+  <select id="estaciones" multiple size="7"></select>
+  <label>Años</label>
+  <div class="fila"><select id="anio_min"></select><select id="anio_max"></select></div>
+  <label>Estaciones del año</label>
+  <div class="chk" id="estaciones_anio"></div>
+  <h2>Proyección</h2>
+  <label for="modelo">Modelo</label>
+  <select id="modelo">
+    <option value="comparar">Comparar ambos modelos</option>
+    <option value="lineal">Tendencia lineal + estacionalidad</option>
+    <option value="movil">Promedio móvil</option>
+  </select>
+  <label for="horizonte">Horizonte: <b id="v_horizonte">24</b> meses</label>
+  <input type="range" id="horizonte" min="6" max="60" step="6" value="24">
+  <label for="ventana">Ventana del promedio móvil: <b id="v_ventana">12</b> meses</label>
+  <input type="range" id="ventana" min="3" max="24" step="1" value="12">
+</aside>
+<main id="principal">
+  <div class="kpis" id="kpis"></div>
+  <div id="aviso"></div>
+  <div class="graficos">
+    <div class="card"><h3>Vista histórica</h3><img id="img_historico" alt="Gráfico histórico"></div>
+    <div class="card"><h3>Vista proyectada</h3><img id="img_proyeccion" alt="Gráfico de proyección"></div>
+  </div>
+  <div class="graficos">
+    <div class="card"><h3>¿Qué modelo se equivoca menos?</h3>
+      <p class="nota" style="margin-top:0">Se entrena sin los últimos 12 meses y se compara la proyección con lo que realmente ocurrió.</p>
+      <table id="tabla"></table></div>
+    <div class="card"><h3>Interpretación</h3><p id="interpretacion" style="margin:0;line-height:1.5"></p>
+      <p class="nota">El filtro de estaciones del año afecta a los indicadores y al gráfico histórico; la proyección usa todo el año para mantener la serie completa.</p></div>
+  </div>
+</main>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const NOMBRES_EST = {verano:"Verano", otono:"Otoño", invierno:"Invierno", primavera:"Primavera"};
+let temporizador = null;
+
+function parametros(){
+  const q = new URLSearchParams();
+  q.set("variable", $("variable").value);
+  [...$("estaciones").selectedOptions].forEach(o => q.append("estacion", o.value));
+  q.set("anio_min", $("anio_min").value); q.set("anio_max", $("anio_max").value);
+  document.querySelectorAll("#estaciones_anio input:checked").forEach(c => q.append("estacion_anio", c.value));
+  q.set("modelo", $("modelo").value); q.set("horizonte", $("horizonte").value); q.set("ventana", $("ventana").value);
+  return q;
+}
+function num(x, d=2){ return x === null || x === undefined ? "-" : Number(x).toLocaleString("es-CL", {minimumFractionDigits:d, maximumFractionDigits:d}); }
+function kpi(titulo, valor, detalle){ return `<div class="kpi"><span>${titulo}</span><b>${valor}</b><small>${detalle||"&nbsp;"}</small></div>`; }
+
+async function actualizar(){
+  $("principal").id = "cargando"; 
+  try{
+    const r = await fetch("/api/vista?" + parametros());
+    const d = await r.json();
+    render(d);
+  } catch(e){ $("aviso").innerHTML = '<div class="aviso">No se pudo conectar con el servidor.</div>'; }
+  document.getElementById("cargando").id = "principal";
+}
+function render(d){
+  const aviso = $("aviso"); aviso.innerHTML = "";
+  if(d.error){ aviso.innerHTML = `<div class="aviso">${d.error}</div>`; $("kpis").innerHTML=""; return; }
+  const i = d.indicadores, u = i.unidad;
+  let k = kpi("Promedio", `${num(i.promedio)} ${u}`, `${num(i.registros,0)} registros`)
+        + kpi("Máximo diario", `${num(i.maximo)} ${u}`, i.maximo_detalle)
+        + kpi("Mínimo diario", `${num(i.minimo)} ${u}`, i.minimo_detalle)
+        + kpi("Volatilidad diaria", num(i.volatilidad), "Índice sin unidad: mayor = cambia más");
+  if(i.variacion !== undefined){
+    const pct = i.variacion_pct === null || i.variacion_pct === undefined ? "" : ` (${num(i.variacion_pct)}%)`;
+    k += kpi("Variación primeros vs últimos 12 meses", `${i.variacion > 0 ? "+" : ""}${num(i.variacion)} ${u}`, pct.trim() || "Diferencia de medias");
+  }
+  if(d.proyeccion){
+    const p = d.proyeccion;
+    k += kpi(`Valor proyectado (${p.fecha_final})`, `${num(p.valor_final)} ${u}`, p.inferior !== null ? `Banda 95%: ${num(p.inferior)} a ${num(p.superior)}` : "Promedio móvil");
+  }
+  $("kpis").innerHTML = k;
+  $("img_historico").src = "data:image/png;base64," + d.img_historico;
+  if(d.aviso){ aviso.innerHTML = `<div class="aviso">${d.aviso}</div>`; $("img_proyeccion").removeAttribute("src"); $("tabla").innerHTML=""; $("interpretacion").textContent=""; return; }
+  $("img_proyeccion").src = "data:image/png;base64," + d.img_proyeccion;
+  const ev = d.evaluacion; const menor = Math.min(...ev.filter(e => e.mae !== null).map(e => e.mae));
+  $("tabla").innerHTML = "<tr><th>Modelo</th><th>Error medio abs.</th><th>RMSE</th></tr>" + ev.map(e => `<tr class="${e.mae === menor ? "mejor" : ""}"><td>${e.modelo}</td><td>${num(e.mae)} ${u}</td><td>${num(e.rmse)} ${u}</td></tr>`).join("");
+  $("interpretacion").textContent = d.interpretacion;
+}
+function programar(){ clearTimeout(temporizador); temporizador = setTimeout(actualizar, 250); }
+
+async function iniciar(){
+  const o = await (await fetch("/api/opciones")).json();
+  $("variable").innerHTML = o.variables.map(v => `<option value="${v.id}">${v.nombre} (${v.unidad})</option>`).join("");
+  $("estaciones").innerHTML = o.estaciones.map(e => `<option value="${e}">${e}</option>`).join("");
+  const anios = []; for(let a = o.anio_min; a <= o.anio_max; a++) anios.push(a);
+  $("anio_min").innerHTML = anios.map(a => `<option>${a}</option>`).join("");
+  $("anio_max").innerHTML = anios.map(a => `<option>${a}</option>`).join("");
+  $("anio_min").value = o.anio_min; $("anio_max").value = o.anio_max;
+  $("estaciones_anio").innerHTML = Object.entries(NOMBRES_EST).map(([v,n]) => `<label><input type="checkbox" value="${v}" checked> ${n}</label>`).join("");
+  document.querySelectorAll("aside select, aside input").forEach(el => el.addEventListener("change", programar));
+  $("horizonte").addEventListener("input", () => { $("v_horizonte").textContent = $("horizonte").value; programar(); });
+  $("ventana").addEventListener("input", () => { $("v_ventana").textContent = $("ventana").value; programar(); });
+  actualizar();
+}
+iniciar();
+</script>
+</body>
+</html>

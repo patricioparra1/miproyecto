@@ -1,0 +1,5 @@
+﻿estacion_anio,registros,temperatura,humedad,presion,viento,temp_max,amplitud_termica
+verano,35021,24.34,55.68,1012.42,17.42,28.69,11.71
+otono,38181,19.65,62.5,1017.72,15.06,23.51,10.71
+invierno,36678,13.91,66.69,1019.42,15.14,17.42,10.01
+primavera,35272,19.64,55.82,1015.99,17.77,23.48,11.71

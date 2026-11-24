@@ -1,0 +1,7 @@
+﻿variable,unidad,limite_inferior,limite_superior,atipicos,porcentaje
+temperatura,°C,0.53,37.92,491,0.34
+humedad,%,13.0,109.0,1042,0.72
+presion,hPa,997.92,1034.92,1228,0.92
+viento,km/h,-3.25,34.75,2933,2.02
+temp_max,°C,2.45,43.65,494,0.34
+rafaga_max,km/h,5.5,73.5,3092,2.22

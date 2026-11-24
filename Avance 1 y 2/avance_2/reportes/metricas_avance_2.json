@@ -1,0 +1,466 @@
+{
+  "antes_completo": {
+    "filas": 145460,
+    "columnas": 23,
+    "tipos": {
+      "fecha": "str",
+      "estacion": "str",
+      "temp_min": "float64",
+      "temp_max": "float64",
+      "rainfall": "float64",
+      "evaporation": "float64",
+      "sunshine": "float64",
+      "dir_rafaga": "str",
+      "rafaga_max": "float64",
+      "winddir9am": "str",
+      "winddir3pm": "str",
+      "viento_9am": "float64",
+      "viento_15h": "float64",
+      "humedad_9am": "float64",
+      "humedad_15h": "float64",
+      "presion_9am": "float64",
+      "presion_15h": "float64",
+      "cloud9am": "float64",
+      "cloud3pm": "float64",
+      "temp_9am": "float64",
+      "temp_15h": "float64",
+      "raintoday": "str",
+      "raintomorrow": "str"
+    },
+    "nulos": {
+      "fecha": 0,
+      "estacion": 0,
+      "temp_min": 1485,
+      "temp_max": 1261,
+      "rainfall": 3261,
+      "evaporation": 62790,
+      "sunshine": 69835,
+      "dir_rafaga": 10326,
+      "rafaga_max": 10263,
+      "winddir9am": 10566,
+      "winddir3pm": 4228,
+      "viento_9am": 1767,
+      "viento_15h": 3062,
+      "humedad_9am": 2654,
+      "humedad_15h": 4507,
+      "presion_9am": 15065,
+      "presion_15h": 15028,
+      "cloud9am": 55888,
+      "cloud3pm": 59358,
+      "temp_9am": 1767,
+      "temp_15h": 3609,
+      "raintoday": 3261,
+      "raintomorrow": 3267
+    },
+    "nulos_pct": {
+      "fecha": 0.0,
+      "estacion": 0.0,
+      "temp_min": 1.02,
+      "temp_max": 0.87,
+      "rainfall": 2.24,
+      "evaporation": 43.17,
+      "sunshine": 48.01,
+      "dir_rafaga": 7.1,
+      "rafaga_max": 7.06,
+      "winddir9am": 7.26,
+      "winddir3pm": 2.91,
+      "viento_9am": 1.21,
+      "viento_15h": 2.11,
+      "humedad_9am": 1.82,
+      "humedad_15h": 3.1,
+      "presion_9am": 10.36,
+      "presion_15h": 10.33,
+      "cloud9am": 38.42,
+      "cloud3pm": 40.81,
+      "temp_9am": 1.21,
+      "temp_15h": 2.48,
+      "raintoday": 2.24,
+      "raintomorrow": 2.25
+    },
+    "nulos_total": 343248,
+    "filas_sin_datos_climaticos": 308,
+    "duplicados": 0,
+    "claves_repetidas": 0,
+    "temp_min_mayor_a_max": 0,
+    "categorias_inconsistentes": 0,
+    "fuera_de_rango": {
+      "temp_min": 0,
+      "temp_max": 0,
+      "temp_9am": 0,
+      "temp_15h": 0,
+      "humedad_9am": 0,
+      "humedad_15h": 0,
+      "presion_9am": 0,
+      "presion_15h": 0,
+      "viento_9am": 0,
+      "viento_15h": 0,
+      "rafaga_max": 0
+    },
+    "fuera_de_rango_total": 0
+  },
+  "antes": {
+    "filas": 145460,
+    "columnas": 14,
+    "tipos": {
+      "fecha": "str",
+      "estacion": "str",
+      "temp_min": "float64",
+      "temp_max": "float64",
+      "temp_9am": "float64",
+      "temp_15h": "float64",
+      "humedad_9am": "float64",
+      "humedad_15h": "float64",
+      "presion_9am": "float64",
+      "presion_15h": "float64",
+      "viento_9am": "float64",
+      "viento_15h": "float64",
+      "rafaga_max": "float64",
+      "dir_rafaga": "str"
+    },
+    "nulos": {
+      "fecha": 0,
+      "estacion": 0,
+      "temp_min": 1485,
+      "temp_max": 1261,
+      "temp_9am": 1767,
+      "temp_15h": 3609,
+      "humedad_9am": 2654,
+      "humedad_15h": 4507,
+      "presion_9am": 15065,
+      "presion_15h": 15028,
+      "viento_9am": 1767,
+      "viento_15h": 3062,
+      "rafaga_max": 10263,
+      "dir_rafaga": 10326
+    },
+    "nulos_pct": {
+      "fecha": 0.0,
+      "estacion": 0.0,
+      "temp_min": 1.02,
+      "temp_max": 0.87,
+      "temp_9am": 1.21,
+      "temp_15h": 2.48,
+      "humedad_9am": 1.82,
+      "humedad_15h": 3.1,
+      "presion_9am": 10.36,
+      "presion_15h": 10.33,
+      "viento_9am": 1.21,
+      "viento_15h": 2.11,
+      "rafaga_max": 7.06,
+      "dir_rafaga": 7.1
+    },
+    "nulos_total": 70794,
+    "filas_sin_datos_climaticos": 308,
+    "duplicados": 0,
+    "claves_repetidas": 0,
+    "temp_min_mayor_a_max": 0,
+    "categorias_inconsistentes": 0,
+    "fuera_de_rango": {
+      "temp_min": 0,
+      "temp_max": 0,
+      "temp_9am": 0,
+      "temp_15h": 0,
+      "humedad_9am": 0,
+      "humedad_15h": 0,
+      "presion_9am": 0,
+      "presion_15h": 0,
+      "viento_9am": 0,
+      "viento_15h": 0,
+      "rafaga_max": 0
+    },
+    "fuera_de_rango_total": 0
+  },
+  "despues": {
+    "filas": 145152,
+    "columnas": 20,
+    "tipos": {
+      "fecha": "datetime64[us]",
+      "estacion": "str",
+      "temp_min": "float64",
+      "temp_max": "float64",
+      "temp_9am": "float64",
+      "temp_15h": "float64",
+      "humedad_9am": "float64",
+      "humedad_15h": "float64",
+      "presion_9am": "float64",
+      "presion_15h": "float64",
+      "viento_9am": "float64",
+      "viento_15h": "float64",
+      "rafaga_max": "float64",
+      "dir_rafaga": "str",
+      "anio": "int32",
+      "mes": "int32",
+      "estacion_anio": "str",
+      "amplitud_termica": "float64",
+      "rafaga_ms": "float64",
+      "rango_temperatura": "object"
+    },
+    "nulos": {
+      "fecha": 0,
+      "estacion": 0,
+      "temp_min": 0,
+      "temp_max": 0,
+      "temp_9am": 0,
+      "temp_15h": 0,
+      "humedad_9am": 0,
+      "humedad_15h": 0,
+      "presion_9am": 11960,
+      "presion_15h": 11960,
+      "viento_9am": 0,
+      "viento_15h": 0,
+      "rafaga_max": 5977,
+      "dir_rafaga": 0,
+      "anio": 0,
+      "mes": 0,
+      "estacion_anio": 0,
+      "amplitud_termica": 0,
+      "rafaga_ms": 5977,
+      "rango_temperatura": 0
+    },
+    "nulos_pct": {
+      "fecha": 0.0,
+      "estacion": 0.0,
+      "temp_min": 0.0,
+      "temp_max": 0.0,
+      "temp_9am": 0.0,
+      "temp_15h": 0.0,
+      "humedad_9am": 0.0,
+      "humedad_15h": 0.0,
+      "presion_9am": 8.24,
+      "presion_15h": 8.24,
+      "viento_9am": 0.0,
+      "viento_15h": 0.0,
+      "rafaga_max": 4.12,
+      "dir_rafaga": 0.0,
+      "anio": 0.0,
+      "mes": 0.0,
+      "estacion_anio": 0.0,
+      "amplitud_termica": 0.0,
+      "rafaga_ms": 4.12,
+      "rango_temperatura": 0.0
+    },
+    "nulos_total": 35874,
+    "filas_sin_datos_climaticos": 0,
+    "duplicados": 0,
+    "claves_repetidas": 0,
+    "temp_min_mayor_a_max": 0,
+    "categorias_inconsistentes": 0,
+    "fuera_de_rango": {
+      "temp_min": 0,
+      "temp_max": 0,
+      "temp_9am": 0,
+      "temp_15h": 0,
+      "humedad_9am": 0,
+      "humedad_15h": 0,
+      "presion_9am": 0,
+      "presion_15h": 0,
+      "viento_9am": 0,
+      "viento_15h": 0,
+      "rafaga_max": 0
+    },
+    "fuera_de_rango_total": 0
+  },
+  "registro": [
+    {
+      "accion": "Columnas descartadas (no relacionadas con el proyecto o con mas de 38% de nulos)",
+      "cantidad": 9,
+      "detalle": [
+        "rainfall",
+        "evaporation",
+        "sunshine",
+        "winddir9am",
+        "winddir3pm",
+        "cloud9am",
+        "cloud3pm",
+        "raintoday",
+        "raintomorrow"
+      ]
+    },
+    {
+      "accion": "Registros sin ninguna medicion climatica eliminados",
+      "cantidad": 308
+    },
+    {
+      "accion": "Filas duplicadas eliminadas",
+      "cantidad": 0
+    },
+    {
+      "accion": "Claves (fecha, estacion) repetidas eliminadas",
+      "cantidad": 0
+    },
+    {
+      "accion": "Valores fuera de rango anulados",
+      "cantidad": 0
+    }
+  ],
+  "tabla_nulos": [
+    {
+      "variable": "temp_min",
+      "nulos_iniciales": 1177,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "temp_max",
+      "nulos_iniciales": 953,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "temp_9am",
+      "nulos_iniciales": 1459,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "temp_15h",
+      "nulos_iniciales": 3301,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "humedad_9am",
+      "nulos_iniciales": 2346,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "humedad_15h",
+      "nulos_iniciales": 4199,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "presion_9am",
+      "nulos_iniciales": 14757,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos. Quedan 11960 nulos en estaciones que nunca midieron la variable",
+      "nulos_finales": 11960
+    },
+    {
+      "variable": "presion_15h",
+      "nulos_iniciales": 14720,
+      "estrategia": "Interpolacion por estacion y mediana estacion-mes",
+      "justificacion": "Variable continua con fuerte dependencia del dia anterior; la mediana cubre huecos largos. Quedan 11960 nulos en estaciones que nunca midieron la variable",
+      "nulos_finales": 11960
+    },
+    {
+      "variable": "viento_9am",
+      "nulos_iniciales": 1459,
+      "estrategia": "Mediana por estacion y mes",
+      "justificacion": "Distribucion asimetrica con rafagas; la media se distorsiona",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "viento_15h",
+      "nulos_iniciales": 2754,
+      "estrategia": "Mediana por estacion y mes",
+      "justificacion": "Distribucion asimetrica con rafagas; la media se distorsiona",
+      "nulos_finales": 0
+    },
+    {
+      "variable": "rafaga_max",
+      "nulos_iniciales": 9955,
+      "estrategia": "Mediana por estacion y mes",
+      "justificacion": "Distribucion asimetrica con rafagas; la media se distorsiona. Quedan 5977 nulos en estaciones que nunca midieron la variable",
+      "nulos_finales": 5977
+    },
+    {
+      "variable": "dir_rafaga",
+      "nulos_iniciales": 10018,
+      "estrategia": "Categoria 'desconocido'",
+      "justificacion": "Variable categorica: no se puede promediar ni inventar una direccion",
+      "nulos_finales": 0
+    }
+  ],
+  "transformaciones": [
+    [
+      "fecha (texto)",
+      "pd.to_datetime()",
+      "Marca de tiempo",
+      "datetime64[ns]"
+    ],
+    [
+      "11 variables climaticas",
+      "pd.to_numeric() y astype(float64)",
+      "Numeros decimales",
+      "float64"
+    ],
+    [
+      "fecha",
+      "Extraccion de anio y mes con .dt",
+      "anio, mes",
+      "int32"
+    ],
+    [
+      "mes",
+      "Asignacion de estacion del anio (hemisferio sur)",
+      "estacion_anio",
+      "object"
+    ],
+    [
+      "temp_max y temp_min",
+      "Resta entre ambas",
+      "amplitud_termica (C)",
+      "float64"
+    ],
+    [
+      "rafaga_max (km/h)",
+      "Division por 3.6",
+      "rafaga_ms (m/s)",
+      "float64"
+    ],
+    [
+      "temp_max",
+      "Clasificacion por rangos con pd.cut()",
+      "rango_temperatura",
+      "object"
+    ]
+  ],
+  "variables_transformadas": 12,
+  "variables_nuevas": 6,
+  "validacion": [
+    [
+      "Columnas esperadas presentes",
+      true
+    ],
+    [
+      "fecha es datetime64",
+      true
+    ],
+    [
+      "Variables climaticas son float64",
+      true
+    ],
+    [
+      "Sin nulos salvo estaciones sin sensor",
+      true
+    ],
+    [
+      "Sin nulos en fecha, estacion ni dir_rafaga",
+      true
+    ],
+    [
+      "Sin filas duplicadas",
+      true
+    ],
+    [
+      "Sin fecha y estacion repetidas",
+      true
+    ],
+    [
+      "Temperatura minima <= maxima",
+      true
+    ],
+    [
+      "Valores dentro de rango",
+      true
+    ]
+  ]
+}

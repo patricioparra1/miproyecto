@@ -1,0 +1,7 @@
+﻿variable,temperatura,humedad,presion,viento,temp_max,amplitud_termica
+temperatura,1.0,-0.5,-0.41,0.09,0.97,0.32
+humedad,-0.5,1.0,0.1,-0.13,-0.56,-0.64
+presion,-0.41,0.1,1.0,-0.27,-0.38,0.05
+viento,0.09,-0.13,-0.27,1.0,0.04,-0.21
+temp_max,0.97,-0.56,-0.38,0.04,1.0,0.49
+amplitud_termica,0.32,-0.64,0.05,-0.21,0.49,1.0

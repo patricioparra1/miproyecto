@@ -1,0 +1,10 @@
+﻿indicador,metodo_calculo,resultado,interpretacion
+Registros válidos,Filas con las cuatro variables principales no nulas,133.192 de 145.152,"El 91,8% de los registros permite comparar las cuatro variables; el resto pertenece a estaciones sin sensor de presión."
+Variable más cambiante día a día,Cambio medio absoluto entre días consecutivos dividido por la desviación estándar,"Velocidad del viento (0,75)","Es la variable que más se modifica de un día al siguiente en relación con su dispersión total; la menos cambiante es temperatura (0,30)."
+Variación de temperatura 2009-2016,Diferencia de la media anual entre 2016 y 2009 en las 46 estaciones con datos en ambos años,"-0,01 °C","Cambio de la temperatura media en siete años. Con una ventana tan corta no permite hablar de cambio climático, solo de la tendencia del período."
+Días con temperatura máxima sobre 35 °C,Porcentaje de registros con temp_max > 35,"5,56%",Mide la frecuencia de calor extremo; sirve para priorizar estaciones donde planificar medidas contra olas de calor.
+Temperatura máxima registrada,Valor máximo de temp_max y fila donde ocurre,"48,1 °C (Woomera, 25-01-2011)",Valor extremo del período con su estación y fecha; sirve para verificar que sea plausible y no un error de medición.
+Estación del año con más viento,Promedio de la velocidad del viento por estación del año,"Primavera (17,8 km/h)","El viento medio es mayor en primavera y menor en otono (15,1 km/h)."
+Dirección de ráfaga más frecuente,Moda de dir_rafaga sin contar la categoría «desconocido»,"W (7,3%)",Indica desde dónde sopla con más frecuencia el viento más fuerte del día.
+Días con humedad menor a 30% a las 15 h,Porcentaje de registros con humedad_15h < 30,"16,11%",Condición de aire seco que aumenta el riesgo de incendios; permite decidir dónde reforzar la vigilancia.
+Variable con mayor ciclo estacional,(Media de la estación más alta - media de la más baja) / desviación estándar,"Temperatura (1,60)","Es la variable cuyo cambio entre estaciones del año pesa más respecto de su dispersión total; en el otro extremo está velocidad del viento (0,35)."

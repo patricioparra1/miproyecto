@@ -1,0 +1,5 @@
+﻿variable,unidad,pendiente_por_anio,valor_proyectado,fecha_proyectada,mae_lineal,mae_promedio_movil
+temperatura,°C,0.045,14.12,2019-06,0.53,3.67
+humedad,%,-0.006,70.42,2019-06,2.39,5.15
+presion,hPa,0.041,1020.67,2019-06,1.83,3.38
+viento,km/h,0.0,14.05,2019-06,0.9,1.48
